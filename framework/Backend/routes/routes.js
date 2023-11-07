@@ -58,10 +58,35 @@ router.post('/login',async (req,res) =>{
     })
 }); 
 
-router.get('/user',(req,res) =>{
-    const cookie = req.cookies['jwt']
+router.get('/user',async (req,res) =>{
+    try{
+        const cookie = req.cookies['jwt']
 
-    res.send(cookie)
+        const claims = jwt.verify(cookie,'secret')
+
+        if(!claims) {
+            return res.status(401).send({
+                status: 'no autenticado'
+            })
+        }
+
+        const user = await User.findOne({_id: claims._id})
+        const {password, ...data} = user.toJSON()
+
+        res.send(data)
+    } catch (err){
+        return res.status(401).send({
+            status: 'No logeado'
+        })
+    } 
+})
+
+router.post('/logout',(req,res) => {
+    res.cookie('jwt','',{maxAge: 0})
+
+    res.send({
+        status: 'success'
+    })
 })
 
 module.exports = router;
