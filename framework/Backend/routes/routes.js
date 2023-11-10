@@ -35,6 +35,7 @@ router.post('/login',async (req,res) =>{
 
     if(!user){
         return res.status(404).send({
+            status: 'error',
             message: 'Usuario no encontrado'
         })
 
@@ -42,6 +43,7 @@ router.post('/login',async (req,res) =>{
 
     if(!await bcrypt.compare(req.body.password, user.password)){
         return res.status(400).send({
+            status: 'error',
             message: 'Crendeciales inválidas'
         })
     }

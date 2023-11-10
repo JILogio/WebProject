@@ -16,7 +16,7 @@
       <label for="floatingPassword">Password</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingRePassword" placeholder="Re-Password" required>
+      <input v-model="data.rePassword" type="password" class="form-control" id="floatingRePassword" placeholder="Re-Password" required>
       <label for="floatingRePassword">Re-Password</label>
     </div>
 
@@ -39,15 +39,20 @@ export default {
             name: '',
             email: '',
             role: 'client',
-            password: ''
+            password: '',
+            rePassword: '',
         });
         const router = useRouter()
 
         const submit = async () =>{
+          if (data.password !== data.rePassword) {
+            alert('Password and Re-Password are not the same');
+            return;
+          }
             await axios.post(url+'register', data)
                 .then(response => {
                     console.log(response.data)
-                    router.push('login')
+                    router.push('/login')
                 })
                 .catch(error => {
                     console.log(error)

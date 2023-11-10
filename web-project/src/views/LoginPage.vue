@@ -14,13 +14,14 @@
     </div>
 
     <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+    <div v-if="message" style="color: red;">{{ message }}</div>
   </form>
 </main>
 </template>
 
 <script>
 import Global from '@/Global';
-import { reactive } from 'vue';
+import { reactive,ref } from 'vue';
 import axios from 'axios'
 import { useRouter } from 'vue-router';
 
@@ -32,6 +33,7 @@ export default {
   name: 'LoginPage',
   setup() {
     const url = Global.url;
+    const message = ref('')
     const data = reactive({
       email: '',
       password: ''
@@ -39,18 +41,20 @@ export default {
     const router = useRouter();
 
     const submit = async () =>{
-      await apiClient.post(url+'login', data)
-                .then(() => {
-                    router.push('/')
-                })
-                .catch(error => {
-                    console.log(error)
-                });
+    try{
+      const response = await apiClient.post(url+'login', data)
+      if(response.data.status != 'error'){
+        router.push('/')
+      }  
+    } catch(err){
+      message.value = `${err.response.data.message}`
+    }
     }
 
     return {
       data,
-      submit
+      message,
+      submit,
     }
   }
 }

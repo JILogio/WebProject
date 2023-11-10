@@ -9,12 +9,12 @@
           </button>
 
           <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" v-if="!auth">
               <li class="nav-item">
-                <RouterLink to="/login" class="nav-link">Login</RouterLink>
+                <a href="/login" class="nav-link">Login</a>
               </li>
               <li class="nav-item">
-                <RouterLink to="/register" class="nav-link">Register</RouterLink>
+                <a href="/register" class="nav-link">Register</a>
               </li>
             </ul>
           </div>
@@ -25,6 +25,6 @@
 
 <script>
 export default {
-  name: 'HeaderLoginPage'
+ name: 'HeaderLoginPage',
 }
 </script>

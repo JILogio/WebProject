@@ -1,16 +1,48 @@
 <template>
-  <HeaderLoginPage/>
-  <router-view/>
+  <HeaderLoginPage v-if="role === ''"/>
+  <HeaderAdminPage v-if="role === 'admin'"/>
+  <MainHeaderPage v-if="role === 'client'"/>
+  <RouterView/>
 </template>
 
 <script>
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import HeaderLoginPage from './components/HeaderLoginPage.vue';
+import MainHeaderPage from './components/MainHeaderPage.vue';
+import HeaderAdminPage from '@/components/HeaderAdminPage.vue'
+
+import {onMounted,ref} from 'vue';
+import axios from 'axios';
+import Global from '@/Global';
+import { RouterView } from 'vue-router';
 
 export default {
     name: "App",
-    components: { HeaderLoginPage }
+    components: { HeaderLoginPage, MainHeaderPage, RouterView, HeaderAdminPage},
+
+    setup() {
+      const url = Global.url;
+      const role = ref('')
+
+      onMounted(async () =>{
+        try{
+          const response = await axios.get(`${url}user`, {
+                      headers: { 'Content-Type': 'application/json' },
+                      withCredentials: true
+                  });
+
+          const content = response.data;
+          role.value = `${content.role}`
+        } catch(err){
+          console.log(err)
+        }
+      });
+
+      return {
+        role
+      }
+    }
 }
 </script>
 
