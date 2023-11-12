@@ -1,13 +1,13 @@
-# front-end
+# back-end
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles for development
 ```
-npm run serve
+npm start
 ```
 
 ### Compiles and minifies for production
