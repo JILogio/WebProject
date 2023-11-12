@@ -24,3 +24,17 @@ Para usar JWT:
 - El servidor crea un JWT firmado y lo devuelve al cliente.
 - El cliente almacena el JWT y lo envía de vuelta en la cabecera Authorization en futuras solicitudes.
 - El servidor valida el JWT en cada solicitud verificando la firma y claims.
+
+### Modelo Admin
+El sistema reconoce si el usuario que ingreso es Administrador mediante el rol que esta definido en la base de datos y devuelve un token con su llava única. Mediante el token y el Vuex, el sistema diferencia el tipo de usuario que ingresa a la página y presenta los permisos de acuerdo al diseño establecido
+
+### Vuex
+Es una librería para gestión del estado (State Management) de aplicaciones Vue.js. Sirve como un almacén centralizado para todos los componentes de una aplicación Vue, con reglas que garantizan que el estado se puede cambiar de manera predecible.
+
+Donde:
+- El estado es la fuente que impulsa nuestra aplicación;
+- La vista, un mapeo declarativo del estado;
+- Las acciones, las posibles formas en que el estado podría cambiar en respuesta a las entradas del usuario desde la vista.
+
+Con esto, nuestro componente se convierte en una gran "Vista", y cualquier componente puede acceder al estado o desencadenar acciones, sin importar dónde se encuentren en el árbol.
+![](https://unpocodejava.files.wordpress.com/2019/05/image006.jpg)
