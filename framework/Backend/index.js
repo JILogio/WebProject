@@ -14,10 +14,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/WebProject')
         .then(() => {
             console.log('Conectado a la base de datos');
 
-            //Servidor network
+           /* //Servidor network
             app.listen(port,ip, () => {
                 console.log('Servidor corriendo en http://'+ip+':'+port);
-            })
+            })*/
             // Servidor local
             app.listen(port, () => {
                 console.log('Servidor corriendo en http://localhost:'+port);

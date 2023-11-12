@@ -56,7 +56,8 @@ router.post('/login',async (req,res) =>{
     })
 
     res.send({
-        status: 'success'
+        status: 'success',
+        message: 'Usuario logeado'
     })
 }); 
 
@@ -68,7 +69,8 @@ router.get('/user',async (req,res) =>{
 
         if(!claims) {
             return res.status(401).send({
-                status: 'no autenticado'
+                status: 'error',
+                message: 'No autenticado'
             })
         }
 
@@ -78,7 +80,8 @@ router.get('/user',async (req,res) =>{
         res.send(data)
     } catch (err){
         return res.status(401).send({
-            status: 'No logeado'
+            status: 'error',
+            message: 'No logeado'
         })
     } 
 })
@@ -87,7 +90,8 @@ router.post('/logout',(req,res) => {
     res.cookie('jwt','',{maxAge: 0})
 
     res.send({
-        status: 'success'
+        status: 'success',
+        message: 'Usuario cerró sesión'
     })
 })
 
