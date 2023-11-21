@@ -4,7 +4,7 @@
     <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Please register</h1>
 
     <div class="form-floating">
-      <input v-model="data.name" class="form-control" id="floatingName" placeholder="Name" required>
+      <input v-model="data.name" type="text" class="form-control" id="floatingName" placeholder="Name" required>
       <label for="floatingName">Name</label>
     </div>
     <div class="form-floating">
@@ -12,11 +12,11 @@
       <label for="floatingEmail">Email address</label>
     </div>
     <div class="form-floating">
-      <input v-model="data.password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+      <input v-model="data.password" type="password" class="form-control password" id="floatingPassword" placeholder="Password" required>
       <label for="floatingPassword">Password</label>
     </div>
     <div class="form-floating">
-      <input v-model="data.rePassword" type="password" class="form-control" id="floatingRePassword" placeholder="Re-Password" required>
+      <input v-model="data.rePassword" type="password" class="form-control re-password" id="floatingRePassword" placeholder="Re-Password" required>
       <label for="floatingRePassword">Re-Password</label>
     </div>
 
@@ -24,6 +24,8 @@
   </form>
 </main>
 </template>
+
+<style scoped src="@/assets/css/RegisterStyles.css"></style>
 
 <script>
 import Global from '@/Global';
