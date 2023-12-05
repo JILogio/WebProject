@@ -18,7 +18,11 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    locationID: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }
-},{ collection: 'User'});
+},{versionKey:false,collection: 'User'});
 
 module.exports = mongoose.model('User',userSchema)

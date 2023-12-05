@@ -10,7 +10,6 @@ var app = express()
 
 // Cargar ficheros rutas
 var routes = require('./routes/routes');
-//var persona_routes = require('./routes/persona');
 
 //Middlewares
 app.use(cookieParser())
@@ -29,7 +28,6 @@ app.use((req, res, next) => {
 
 // Añadir prefijos a rutas / Cargar rutas
 app.use('/api',routes)
-//app.use('/api',persona_routes);
 
 // Exportar modulo (fichero actual)
 module.exports = app;
