@@ -92,7 +92,83 @@ var userController = {
             status: 'success',
             message: 'Usuario cerró sesión'
         })
-    }
+    },
+
+    delete: async (req, res) => {
+        try {
+            var userFound = req.params.search;
+    
+            const userDeleted = await User.findOneAndDelete({ email: userFound }).exec();
+    
+            if (!userDeleted) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No existe'
+                });
+            }
+    
+            return res.send({
+                status: 'success',
+                userDeleted
+            });
+        } catch (err) {
+            return res.status(500).send({
+                status: 'error',
+                message: 'Error al borrar'
+            });
+        }
+    },
+
+    getUsers: async (req,res) => {
+        try {
+            const users = await User.find({}).exec();
+            if (users.length == 0) {
+              return res.status(200).json({
+                status: 'error',
+                message: 'No hay usuarios'
+              });
+            }
+        
+            return res.send({
+              status: 'success',
+              users
+            });
+        } catch (err) {
+            console.log(err)
+            return res.status(200).send({
+              status: 'error',
+              message: 'Error al devolver datos'
+            });
+        }
+    },
+
+    search: async (req, res) => {
+        try {
+            const searchString = req.query.search;
+    
+            const user = await User.find({"$or": [
+                {"name": searchString},
+                {"email": searchString}
+            ]},).exec();
+    
+            if (!user || user.length <= 0) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay datos que coincidan con la búsqueda'
+                });
+            }
+    
+            return res.send({
+                status: 'success',
+                user
+            });
+        } catch (err) {
+            return res.status(500).send({
+                status: 'error',
+                message: 'Error en la petición'
+            });
+        }
+    },
 }
 
 module.exports = userController;

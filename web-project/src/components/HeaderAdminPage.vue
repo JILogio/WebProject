@@ -43,7 +43,7 @@ export default {
     const auth = computed(() => store.state.authenticated)
 
     const logout = async () =>{
-      await axios.post(url+'logout',{}, {withCredentials: true})
+      await axios.post(url+'User/logout',{}, {withCredentials: true})
     }
 
     return {

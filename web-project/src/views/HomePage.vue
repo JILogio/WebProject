@@ -18,7 +18,7 @@ export default {
 
         onMounted(async () => {
             try {
-                const response = await axios.get(`${url}user`, {
+                const response = await axios.get(`${url}User/user`, {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 });

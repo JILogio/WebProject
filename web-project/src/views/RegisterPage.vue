@@ -51,7 +51,7 @@ export default {
             alert('Password and Re-Password are not the same');
             return;
           }
-            await axios.post(url+'register', data)
+            await axios.post(url+'User/register', data)
                 .then(response => {
                     console.log(response.data)
                     router.push('/login')

@@ -44,7 +44,7 @@ export default {
 
     const submit = async () =>{
     try{
-      const response = await apiClient.post(url+'login', data)
+      const response = await apiClient.post(url+'User/login', data)
       if(response.data.status != 'error'){
         router.push('/')
       }  
