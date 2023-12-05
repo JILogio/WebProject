@@ -19,6 +19,8 @@
 </main>
 </template>
 
+<style scoped src="@/assets/css/LoginStyles.css"></style>
+
 <script>
 import Global from '@/Global';
 import { reactive,ref } from 'vue';

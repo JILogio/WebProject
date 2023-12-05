@@ -14,7 +14,7 @@
                  <a class="nav-link active" aria-current="page" href="#">Productos</a>
                </li>
                <li class="nav-item">
-                 <a class="nav-link" href="#">About Us</a>
+                 <a class="nav-link" href="#">Ofertas</a>
                </li>
              </ul>
              <ul class="navbar-nav">
