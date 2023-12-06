@@ -1,7 +1,8 @@
 <template>
-<main class="form-signin w-100 m-auto">
+<main class="form-signin bg-rect w-50 m-auto py-5 px-4 rounded">
   <form @submit.prevent="submit">
-    <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Please register</h1>
+    <img class="mb-4" src="../assets/logo/logo.png" style="width: 75%; display: block; margin: 0 auto;">
+    <h1 class="h3 mb-3 fw-normal" style="text-align: center; color: white;">Please register</h1>
 
     <div class="form-floating">
       <input v-model="data.name" type="text" class="form-control" id="floatingName" placeholder="Name" required>

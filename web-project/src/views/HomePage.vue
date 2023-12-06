@@ -1,6 +1,15 @@
 <template>
-    {{ message }}
+    <section class="Welcome">
+        <div class="container1">
+            <h1>Bienvenidos</h1>
+            <!-- <p>{{ message }}</p> -->
+            <p>Disfruta tus mejores momentos con un café. </p>
+            <button class="started">About Us</button>
+        </div>
+    </section>
 </template>
+
+<style scoped src="@/assets/css/HomeStyle.css"></style>
 
 <script>
 import { onMounted, ref } from 'vue';

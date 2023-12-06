@@ -1,5 +1,5 @@
 <template>
-    <body>
+    <header>
        <nav class="navbar navbar-expand-lg bg-body-tertiary d-flex justify-content-between align-items-center">
            <div class="container-fluid">
              <a class="navbar-brand" href="/">Home</a>
@@ -25,7 +25,7 @@
              </div>
            </div>
          </nav>
-    </body>
+    </header>
    </template>
 
 <script>

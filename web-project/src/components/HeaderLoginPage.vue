@@ -1,6 +1,6 @@
 <template>
-    <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <headers>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">Coffe Shop</a>
 
@@ -23,7 +23,7 @@
           </div>
         </div>
       </nav>
-  </body>
+  </headers>
 </template>
 
 <script>

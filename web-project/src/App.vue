@@ -5,14 +5,17 @@
     <MainHeaderPage v-if="role === 'client'"/>
   </header>
   <RouterView/>
+  <FooterPage v-if="!hideFooter"/>
 </template>
 
 <script>
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 import HeaderLoginPage from './components/HeaderLoginPage.vue';
 import MainHeaderPage from './components/MainHeaderPage.vue';
-import HeaderAdminPage from '@/components/HeaderAdminPage.vue'
+import HeaderAdminPage from '@/components/HeaderAdminPage.vue';
+import FooterPage from './components/FooterPage.vue';
 
 import {onMounted,ref} from 'vue';
 import axios from 'axios';
@@ -21,7 +24,21 @@ import { RouterView } from 'vue-router';
 
 export default {
     name: "App",
-    components: { HeaderLoginPage, MainHeaderPage, RouterView, HeaderAdminPage},
+    components: { HeaderLoginPage, MainHeaderPage, RouterView, HeaderAdminPage,FooterPage},
+
+    data() {
+    return {
+      hideFooter: false,
+      };
+    },
+    watch: {
+    '$route.path': {
+      handler(newValue) {
+        this.hideFooter = newValue === '/login' || newValue === '/register';
+      },
+        immediate: true,
+      },
+    },
 
     setup() {
       const url = Global.url;
