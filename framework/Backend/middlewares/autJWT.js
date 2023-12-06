@@ -37,6 +37,7 @@ exports.mdwares = {
     
             if(user.role == 'admin'){
                 next();
+                return;
             }
     
             return res.status(403).send({

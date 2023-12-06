@@ -7,18 +7,22 @@
     <div class="container">
       <img src="../assets/icons/coffe_shop.jpg" alt="coffe_shop">
       <p>
-        Somos una empresa nacional dedicada a la distribución de alimentos cárnicos a domicilio con sede en Quito, Ecuador.
-        Estamos comprometidos con ofrecer unexcelente servicio al cliente y ofrecer productos de la más alta calidad. Para
-        lograr esto estamos constantemente mejorando nuestros procesos para servirtemejor y asegurarnos que Friovesa se convierta
-        en tu preferencia al momento de comprar productos cárnicos.<br><br>
+        Nace para mantener y continuar con la tradición de mas de tres generaciones, en las calles
+        Junín y Rocafuerte del barrio La Panadería, tan tradicional por sus panaderías artesanales, de
+        donde toma el nombre del barrio en la ciudad de Riobamba hasta la actualidad.<br><br>
 
-        Creemos en la calidad de nuestros productores nacionales, así como en la de nuestros aliados importadores y al igual que tú,
-        siempre estamos en la búsqueda dela mejor calidad en nuestros alimentos. Para garantizar un mejor tiempo de vida, todos nuestros
-        productos se encuentran empacados al vacío y se mantienen congeladoshasta ser despachados a tu domicilio.<br><br>
+        Por el año 1909 el Sr. José López, mi abuelo materno, quien en ese año dirige la construcción
+        del horno e instalaciones, con los implementos de la panadería, guiado por revistas y catálogos
+        de panaderías francesa, quien, al terminar la infraestructura, la bautiza con el nombre de
+        PANADERIA DEL PAN FRANCES, teniendo la producción de panes y pastelería, de alta calidad,
+        con la utilización de materias primas de primera por más de 60 años.<br><br>
 
-        Esperamos poder servirte pronto.<br><br>
-
-        El equipo de Friovesa.
+        En la actualidad, yo Geovanny Jácome López, nieto de Sr. José López, estoy retomando la
+        tradición familiar, de seguir con la producción de productos artesanales de alta calidad de
+        panadería, pastelería y cafetería, con la CAFETERIA BECHO GEOVANNY y poder cubrir y
+        satisfacer las necesidades gastronómicas de nuestra población local, como turística, en un
+        lugar acogedor con calidad y calidez, con infraestructura moderna en el mismo lugar donde
+        nació la Panadería del Pan Frances.<br><br>
       </p>
     </div>
 </template>
