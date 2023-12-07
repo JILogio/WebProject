@@ -23,7 +23,7 @@
                </li>
              </ul>
              <form class="d-flex" role="search" @submit.prevent="search">
-               <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                <button class="btn btn-outline-success" type="submit">Search</button>
            </form>
            </div>
@@ -40,7 +40,7 @@ import axios from 'axios';
 
 export default {
  name: 'MainHeaderPage',
- setup(_, {emit}) {
+ setup() {
     const url = Global.url;
     const store = useStore();
 
@@ -50,14 +50,9 @@ export default {
       await axios.post(url+'User/logout',{}, {withCredentials: true})
     }
 
-    const search = () => {
-      emit('search', this.searchQuery);
-    }
-
     return {
       auth,
       logout,
-      search,
     }
  }
 }

@@ -11,7 +11,7 @@
          <label for="price">Precio:</label>
          <input type="number" id="price" v-model="price" required :step="0.01" />
          
-         <button type="submit">Enviar</button>
+         <button onclick="window.location.href='/Adminproduct'" type="submit">Enviar</button>
        </form>
     </div>
 </template>

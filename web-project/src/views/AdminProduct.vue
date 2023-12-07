@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="center">
+        <h1>Productos</h1>
         <table>
             <thead>
             <tr>
@@ -15,11 +16,12 @@
                 <td>{{ product.type }}</td>
                 <td>{{ product.price }}</td>
                 <td>
-                    <button @click="deleteProduct(product.name, $event)">Delete</button>
+                    <button @click="deleteProduct(product._id, $event)">Delete</button>
                 </td>
             </tr>
             </tbody>
         </table>
+        <a href="/AddProduct"><button>Añadir</button></a>
     </div>
 </template>
 
@@ -55,8 +57,7 @@ const apiClient = axios.create({
     async deleteProduct(id, event) {
         event.preventDefault();
         try {
-            console.log(id)
-            await apiClient.delete(this.url+'Product/delete/'+'id');
+            await apiClient.delete(this.url+`Product/delete/${id}`);
             this.fetchProducts();
         } catch (error) {
             console.error('Error deleting product:', error);
