@@ -9,7 +9,7 @@
          <input type="text" id="type" v-model="type" required />
          
          <label for="price">Precio:</label>
-         <input type="number" id="price" v-model="price" required />
+         <input type="number" id="price" v-model="price" required :step="0.01" />
          
          <button type="submit">Enviar</button>
        </form>
@@ -21,6 +21,10 @@
 <script>
 import axios from 'axios';
 import Global from '../Global'
+
+const apiClient = axios.create({
+  withCredentials: true,
+});
    
    export default {
     name: 'AddProduct',
@@ -33,17 +37,15 @@ import Global from '../Global'
     },
     methods: {
         async handleSubmit() {
-         /*const product = {
+         const product = {
            name: this.name,
            type: this.type,
            price: this.price
-        };*/
+        };
         const url = Global.url;
 
          try {
-           const response = await axios.post(url+'Product/save',{
-                                            headers: {'Content-Type': 'application/json'},
-                                            withCredentials: true});
+           const response = await apiClient.post(url+'Product/save',product);
            if(response.data.status != 'error'){
             alert('Producto agregado con éxito');
             this.name = '';

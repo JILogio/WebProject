@@ -72,9 +72,10 @@ var productController = {
 
     delete: async (req, res) => {
         try {
-            var productName = req.params.name;
+            var product = req.params.id;
+            console.log(product)
     
-            const productDeleted = await Product.findOneAndDelete({ name: productName }).exec();
+            const productDeleted = await Product.findOneAndDelete({ _id: product }).exec();
     
             if (!productDeleted) {
                 return res.status(404).send({

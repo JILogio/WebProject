@@ -15,9 +15,9 @@ router.delete('/User/delete/:search',[mdwares.verifyToken,mdwares.isAdmin],userC
 
 //Rutas del Schema Product
 router.post('/Product/save',[mdwares.isAdmin],productController.save);
-router.get('/Product/products',productController.getProducts);
-router.get('/Product/product',productController.search);
-router.delete('/Product/delete/:name',[mdwares.verifyToken,mdwares.isAdmin],productController.delete);
+router.get('/Product/products',[mdwares.verifyToken],productController.getProducts);
+router.get('/Product/product',[mdwares.verifyToken],productController.search);
+router.delete('/Product/delete/:id',[mdwares.isAdmin],productController.delete);
 
 //Rutas del Schema location
 router.post('/Location/save',[mdwares.verifyToken],locationController.save);

@@ -15,6 +15,10 @@
 import axios from 'axios';
 import Global from '../Global'
 
+const apiClient = axios.create({
+  withCredentials: true,
+});
+
 export default {
     name: 'ProductPage',
 
@@ -29,14 +33,16 @@ export default {
     },
     methods: {
         getProductos(){
-            axios.get(this.url+'/Product/products')
+            apiClient.get(this.url+'Product/products')
                 .then(res => {
                     if(res.data.status == 'success'){
                         this.products = res.data.products;
-                        console.log(this.personas)
                     }
                 })
-        },
+                .catch (err => {
+                    console.log(err)
+                })
+            },
     }
 }
 </script>
