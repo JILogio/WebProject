@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
     },
     locationID: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
     }
 },{versionKey:false,collection: 'User'});
 
