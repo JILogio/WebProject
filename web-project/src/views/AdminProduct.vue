@@ -17,6 +17,7 @@
                 <td>{{ product.price }}</td>
                 <td>
                     <button @click="deleteProduct(product._id, $event)">Delete</button>
+                    <button @click="updateProduct(product._id, $event)">Update</button>
                 </td>
             </tr>
             </tbody>
@@ -36,6 +37,7 @@ const apiClient = axios.create({
 });
    
    export default {
+    name: "AdminProduct",
     data() {
        return {
          url: Global.url,
@@ -63,6 +65,18 @@ const apiClient = axios.create({
             console.error('Error deleting product:', error);
             }
         },
+    async updateProduct(id, event) {
+        event.preventDefault();
+        try {
+            const product = await apiClient.get(this.url+'Product/product?search='+id);
+            if(product.data.status == 'success'){
+                this.$router.push({ name: 'UpdateProduct', params: { id: id } });
+            }
+        } catch (error) {
+            console.error('Error, product doesnt exist:', error);
+            }
+        },
     },
+
    };
 </script>

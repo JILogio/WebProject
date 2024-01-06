@@ -96,9 +96,9 @@ var userController = {
 
     delete: async (req, res) => {
         try {
-            var userFound = req.params.search;
+            var userFound = req.params.id;
     
-            const userDeleted = await User.findOneAndDelete({ email: userFound }).exec();
+            const userDeleted = await User.findOneAndDelete({ _id: userFound }).exec();
     
             if (!userDeleted) {
                 return res.status(404).send({
@@ -147,7 +147,7 @@ var userController = {
             const searchString = req.query.search;
     
             const user = await User.find({"$or": [
-                {"name": searchString},
+                {"_id": searchString},
                 {"email": searchString}
             ]},).exec();
     
@@ -169,6 +169,40 @@ var userController = {
             });
         }
     },
+
+    update: async (req, res) => {
+        try {
+            const user = await User.findById(req.params.id).exec();
+    
+            if (!user) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No se encuentra el usuario'
+                });
+            }
+
+            const salt = await bcrypt.genSalt(10)
+            const hasedPassword = await bcrypt.hash(req.body.password, salt)
+    
+            await User.findOneAndUpdate({ _id: req.params.id },{$set:{
+                                            name: req.body.name || user.name,
+                                            email: req.body.type || user.email,
+                                            role: req.body.price || user.role,
+                                            password: hasedPassword || user.password
+                                            }});
+    
+            return res.send({
+                status: 'success',
+                product: 'Usuario actualizado'
+            });
+        } catch (err) {
+            console.log(err);
+            return res.status(500).send({
+                status: 'error',
+                message: 'Error al actualizar'
+            });
+        }
+    }
 }
 
 module.exports = userController;

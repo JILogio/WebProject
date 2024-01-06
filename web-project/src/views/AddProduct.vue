@@ -10,8 +10,7 @@
          
          <label for="price">Precio:</label>
          <input type="number" id="price" v-model="price" required :step="0.01" />
-         
-         <button onclick="window.location.href='/Adminproduct'" type="submit">Enviar</button>
+         <button type="submit">Enviar</button>
        </form>
     </div>
 </template>
@@ -47,16 +46,19 @@ const apiClient = axios.create({
          try {
            const response = await apiClient.post(url+'Product/save',product);
            if(response.data.status != 'error'){
+
             alert('Producto agregado con éxito');
             this.name = '';
             this.type = '';
             this.price = '';
+
+            this.$router.push('/AdminProduct');
            } else{
+            alert('Error al agregar producto');
             console.log(response.data)
            }
          } catch (error) {
            console.log(error);
-           alert(error);
          }
        }
     }

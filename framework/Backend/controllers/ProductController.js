@@ -9,7 +9,9 @@ var productController = {
                 type: req.body.type,
                 price: req.body.price,
             })
-    
+            
+            console.log(product)
+
             const result = await product.save()
             res.send(result)
         } catch(err) {
@@ -48,7 +50,7 @@ var productController = {
             const searchString = req.query.search;
     
             const product = await Product.find({"$or": [
-                {"name": searchString}
+                {"_id": searchString}
             ]},).exec();
     
             if (!product || product.length <= 0) {
@@ -91,6 +93,36 @@ var productController = {
             return res.status(500).send({
                 status: 'error',
                 message: 'Error al borrar'
+            });
+        }
+    },
+
+    update: async (req, res) => {
+        try {
+            const product = await Product.findById(req.params.id).exec();
+    
+            if (!product) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No se encuentra el producto'
+                });
+            }
+    
+            await Product.findOneAndUpdate({ _id: req.params.id },{$set:{
+                                            name: req.body.name || product.name,
+                                            type: req.body.type || product.type,
+                                            price: req.body.price || product.price,
+                                            }});
+    
+            return res.send({
+                status: 'success',
+                product: 'Producto actualizado'
+            });
+        } catch (err) {
+            console.log(err);
+            return res.status(500).send({
+                status: 'error',
+                message: 'Error al actualizar'
             });
         }
     }
