@@ -186,8 +186,8 @@ var userController = {
     
             await User.findOneAndUpdate({ _id: req.params.id },{$set:{
                                             name: req.body.name || user.name,
-                                            email: req.body.type || user.email,
-                                            role: req.body.price || user.role,
+                                            email: req.body.email || user.email,
+                                            role: req.body.role || user.role,
                                             password: hasedPassword || user.password
                                             }});
     

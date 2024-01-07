@@ -43,11 +43,41 @@ var locationController = {
         }
     },
 
+    search: async (req, res) => {
+        try {
+            const searchString = req.query.search;
+    
+            const location = await Location.find({"$or": [
+                {"_id": searchString},
+                {"postal":searchString}
+            ]},).exec();
+    
+            if (!location || location.length <= 0) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay datos que coincidan con la búsqueda'
+                });
+            }
+    
+            return res.send({
+                status: 'success',
+                location
+            });
+        } catch (err) {
+            return res.status(500).send({
+                status: 'error',
+                message: 'Error en la petición'
+            });
+        }
+    },
+
     delete: async (req, res) => {
         try {
-            const { street, postal } = req.params;
+            //const { street, postal } = req.params;
+            var localfound = req.params.id
 
-            const locationDeleted = await Location.findOneAndDelete({ street, postal }).exec();
+            //const locationDeleted = await Location.findOneAndDelete({ street, postal }).exec();
+            const locationDeleted = await Location.findOneAndDelete({ _id: localfound }).exec();
     
             if (!locationDeleted) {
                 return res.status(404).send({

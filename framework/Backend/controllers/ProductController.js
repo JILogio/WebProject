@@ -9,8 +9,6 @@ var productController = {
                 type: req.body.type,
                 price: req.body.price,
             })
-            
-            console.log(product)
 
             const result = await product.save()
             res.send(result)
@@ -37,7 +35,6 @@ var productController = {
               products
             });
         } catch (err) {
-            console.log(err)
             return res.status(200).send({
               status: 'error',
               message: 'Error al devolver datos'

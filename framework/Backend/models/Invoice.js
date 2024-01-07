@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const invoiceSchema = new mongoose.Schema({
     idOrder: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Array,
         required: true
     },
     date: {
@@ -20,7 +20,7 @@ const invoiceSchema = new mongoose.Schema({
         }
     },
     idLocation: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true
     }
 }, { versionKey: false, collection: 'Invoice' });
