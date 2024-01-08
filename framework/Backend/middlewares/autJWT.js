@@ -50,5 +50,28 @@ exports.mdwares = {
                 message: 'Bad Request'
             })
         }
+    },
+
+    isEmployee: async (req, res, next) => {
+        try {
+            const cookie = req.cookies['jwt']
+            const claims = jwt.verify(cookie,'secret')
+            const user = await User.findOne({_id: claims._id})
+    
+            if(user.role == 'employee'){
+                next();
+                return;
+            }
+    
+            return res.status(403).send({
+                status: 'error',
+                message: 'Requiere rol de empleado'
+            })            
+        } catch (error) {
+            return res.status(400).send({
+                status: 'error',
+                message: 'Bad Request'
+            })
+        }
     }
 }

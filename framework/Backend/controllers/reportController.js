@@ -1,6 +1,5 @@
 const Invoice = require('../models/Invoice')
 const Location = require('../models/location')
-const order = require('../models/order')
 const Order = require('../models/order')
 const Product = require('../models/Product')
 const User = require('../models/User')
@@ -70,6 +69,36 @@ var reportController = {
         res.status(500).json({ error: error.toString() });
       }
   },
+
+  getAllOrders: async (req,res) => {
+    try {
+      const orders = await Order.find().exec();
+      const users = []
+      const products = []
+      const data = []
+
+      for(let i = 0; i < orders.length; i++) {
+        users.push(await User.find(orders[i].idUser))
+      }
+
+      for(let i = 0; i < orders.length; i++) {
+        products.push(await Product.find(orders[i].idProduct))
+      }
+
+      for(let i = 0; i < users.length; i++){
+        data.push({
+          Client: users[i][0].name,
+          Product: products[i][0].name,
+          Amount: orders[i].amount
+        })
+      }
+
+
+      res.status(200).json(data)
+    } catch (error) {
+      res.status(500).json({ error: error.toString() });
+    }
+  }
 }
 
 module.exports = reportController;

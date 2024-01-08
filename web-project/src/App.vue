@@ -3,6 +3,7 @@
     <HeaderLoginPage v-if="role === ''"/>
     <HeaderAdminPage v-if="role === 'admin'"/>
     <MainHeaderPage v-if="role === 'client'"/>
+    <HeaderEmployeePage v-if="role === 'employee'" />
   </header>
   <RouterView/>
   <FooterPage v-if="!hideFooter"/>
@@ -15,6 +16,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import HeaderLoginPage from './components/HeaderLoginPage.vue';
 import MainHeaderPage from './components/MainHeaderPage.vue';
 import HeaderAdminPage from '@/components/HeaderAdminPage.vue';
+import HeaderEmployeePage from '@/components/HeaderEmployeePage.vue'
 import FooterPage from './components/FooterPage.vue';
 
 import {onMounted,ref} from 'vue';
@@ -24,7 +26,7 @@ import { RouterView } from 'vue-router';
 
 export default {
     name: "App",
-    components: { HeaderLoginPage, MainHeaderPage, RouterView, HeaderAdminPage,FooterPage},
+    components: { HeaderLoginPage, MainHeaderPage, RouterView, HeaderAdminPage,HeaderEmployeePage,FooterPage},
 
     data() {
     return {

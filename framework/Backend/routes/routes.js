@@ -46,5 +46,6 @@ router.delete('/Invoice/delete/:id',[mdwares.isAdmin],invoiceController.delete);
 //Rutas del Reportes
 router.get('/Report/InvoicesLocation/:location',[mdwares.isAdmin],reportController.getProductsForLocation)
 router.get('/Report/InvoicesWithDistrict',[mdwares.isAdmin],reportController.getAllInvoices)
+router.get('/Report/OrdersWithClients',[mdwares.isEmployee],reportController.getAllOrders)
 
 module.exports = router;
