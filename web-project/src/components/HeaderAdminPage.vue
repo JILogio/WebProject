@@ -17,7 +17,7 @@
                    <a class="nav-link active" aria-current="page" href="/Adminuser">Usuarios</a>
                  </li>
                  <li class="nav-item">
-                   <a class="nav-link" href="#">Reporte</a>
+                   <a class="nav-link active" aria-current="page" href="/Reports">Reporte</a>
                  </li>
                </ul>
                <ul class="navbar-nav">

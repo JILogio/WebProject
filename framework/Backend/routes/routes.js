@@ -4,6 +4,7 @@ const productController = require('../controllers/ProductController');
 const locationController = require('../controllers/locationController');
 const orderController = require('../controllers/OrderController');
 const invoiceController = require('../controllers/invoiceController');
+const reportController = require('../controllers/reportController');
 const { mdwares } = require('../middlewares');
 
 //Rutas del Schema User
@@ -41,5 +42,9 @@ router.post('/Invoice/save',[mdwares.verifyToken],invoiceController.save);
 router.get('/Invoices',[mdwares.verifyToken],invoiceController.getInvoices);
 router.get('/Invoice',[mdwares.verifyToken],invoiceController.search);
 router.delete('/Invoice/delete/:id',[mdwares.isAdmin],invoiceController.delete);
+
+//Rutas del Reportes
+router.get('/Report/InvoicesLocation/:location',[mdwares.isAdmin],reportController.getProductsForLocation)
+router.get('/Report/InvoicesWithDistrict',[mdwares.isAdmin],reportController.getAllInvoices)
 
 module.exports = router;

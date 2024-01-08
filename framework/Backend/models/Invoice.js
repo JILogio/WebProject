@@ -20,7 +20,7 @@ const invoiceSchema = new mongoose.Schema({
         }
     },
     idLocation: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     }
 }, { versionKey: false, collection: 'Invoice' });

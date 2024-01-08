@@ -13,6 +13,8 @@ import AdminUser from '@/views/AdminUser.vue'
 import AddUser from '@/views/AddUser.vue'
 import UpdateProduct from '@/views/UpdateProduct.vue'
 import UpdateUser from '@/views/UpdateUser.vue'
+import RealizarPedido from '@/views/RealizarPedido.vue'
+import ReportPage from '@/views/ReportPage.vue'
 import store from '@/store'
 
 const routes = [
@@ -29,6 +31,8 @@ const routes = [
     {path: '/Adduser' ,component: AddUser},
     {path: '/UpdateProduct/:id' ,name: 'UpdateProduct',component: UpdateProduct, props: true},
     {path: '/UpdateUser/:id' ,name: 'UpdateUser',component: UpdateUser, props: true},
+    {path: '/RealizarPedido/:orders/:total' ,name: 'RealizarPedido',component: RealizarPedido, props: true},
+    {path: '/Reports' ,component: ReportPage},
 ]
 
 const router = createRouter({
